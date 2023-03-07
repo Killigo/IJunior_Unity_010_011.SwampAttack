@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class State : MonoBehaviour
@@ -10,7 +9,7 @@ public abstract class State : MonoBehaviour
 
     public void Enter(Player target)
     {
-        if(enabled == false)
+        if (enabled == false)
         {
             Target = target;
             enabled = true;
@@ -24,7 +23,7 @@ public abstract class State : MonoBehaviour
 
     public void Exit()
     {
-        if(enabled == true)
+        if (enabled == true)
         {
             foreach (var transition in _transitions)
                 transition.enabled = false;

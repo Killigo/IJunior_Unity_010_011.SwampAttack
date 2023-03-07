@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
@@ -24,7 +22,7 @@ public class Enemy : MonoBehaviour
     {
         _health -= damage;
 
-        if(_health <= 0)
+        if (_health <= 0)
         {
             Dying?.Invoke(this);
             Destroy(gameObject);

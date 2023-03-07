@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,11 +13,15 @@ public class Player : MonoBehaviour
     private int _currentWeaponNumber = 0;
     private int _currentHealth;
     private Animator _animator;
+    private int _deathHash = Animator.StringToHash("Death");
+    private int _shootHash = Animator.StringToHash("Shoot");
+    private float _delay;
 
     public int Money { get; private set; }
 
     public event UnityAction<int, int> HealthChanged;
     public event UnityAction<int> MoneyChanged;
+    public event UnityAction Died;
 
     private void Start()
     {
@@ -29,10 +32,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.timeScale != 0 && _delay <= 0)
         {
             _currentWeapon.Shoot(_shootPoint);
+            _animator.Play(_shootHash);
+            _delay = _currentWeapon.RateOfFire;
         }
+
+        _delay -= Time.deltaTime;
     }
 
     public void ApplyDamage(int damage)
@@ -42,7 +49,9 @@ public class Player : MonoBehaviour
 
         if (_currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Died?.Invoke();
+            //Destroy(gameObject);
+            _animator.Play(_deathHash);
         }
     }
 

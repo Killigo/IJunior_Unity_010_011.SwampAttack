@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class CelebrationState : State
 {
     private Animator _animator;
+    private int _celebrationHash = Animator.StringToHash("Celebration");
 
     private void Awake()
     {
@@ -14,7 +13,7 @@ public class CelebrationState : State
 
     private void OnEnable()
     {
-        _animator.Play("Celebration");
+        _animator.Play(_celebrationHash);
     }
 
     private void OnDisable()
