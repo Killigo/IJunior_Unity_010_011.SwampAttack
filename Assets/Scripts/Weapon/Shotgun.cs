@@ -2,11 +2,11 @@
 
 public class Shotgun : Weapon
 {
-    private int numberOfPellets = 5;
+    private int _numberOfPellets = 5;
 
     public override void Shoot(Transform shootPoint)
     {
-        for (int i = 0; i < numberOfPellets; i++)
+        for (int i = 0; i < _numberOfPellets; i++)
         {
             Instantiate(Bullet, shootPoint.position, Quaternion.identity);
         }
