@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     public event UnityAction<int, int> HealthChanged;
     public event UnityAction<int> MoneyChanged;
-    public event UnityAction Died;
+    //public event UnityAction Died;
 
     private void Start()
     {
@@ -49,8 +49,8 @@ public class Player : MonoBehaviour
 
         if (_currentHealth <= 0)
         {
-            Died?.Invoke();
-            //Destroy(gameObject);
+            //Died?.Invoke();
+            Destroy(gameObject);
             _animator.Play(_deathHash);
         }
     }

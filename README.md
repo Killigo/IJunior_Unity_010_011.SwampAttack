@@ -1,2 +1,2 @@
-# IJunior_Unity_010_011.SwampAttack
- 
+# Демонстрация работы доступна в видео по пути:
+\Recordings\movie_001.mp4

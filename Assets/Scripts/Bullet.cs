@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private int _damage;
     [SerializeField] private float _speed;
 
-    private float _spreadAngle = 0.2f;
+    private float _spreadAngle = 0.5f;
 
     private void Update()
     {
